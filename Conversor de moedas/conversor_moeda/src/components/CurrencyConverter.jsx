@@ -15,6 +15,7 @@ const CurrencyConverter = () => {
                 "https://v6.exchangerate-api.com/v6/1a7139a299c0ecc49a9dde83/latest/USD")
 
             .then((response)=> {  
+              console.log(response.data)
          setRates(response.data.conversion_rates);
        } )
        .catch((error)=>{
@@ -26,7 +27,7 @@ const CurrencyConverter = () => {
             if(rates){
               const rateFrom = rates[fromCurrency] || 0
               const rateTo = rates[toCurrency] || 0;
-              setConversedAmount((amount/rateFrom)* rateTo).toFixed(2);
+              setConversedAmount(((amount/rateFrom)* rateTo).toFixed(2));
             }
         },[amount,rates,fromCurrency,toCurrency]);
 
